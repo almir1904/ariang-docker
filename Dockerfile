@@ -16,7 +16,7 @@ LABEL maintainer="almir1904" \
     org.label-schema.vcs-ref=$VCS_REF \
     org.label-schema.vcs-url="https://github.com/almir1904/ariang-docker" \
     org.label-schema.vcs-type="Git" \
-    org.label-schema.vendor="hurlenko" \
+    org.label-schema.vendor="almir1904" \
     org.label-schema.schema-version="1.0"
 
 RUN apk update \
