@@ -37,6 +37,8 @@ COPY aria2.conf ./conf-copy/aria2.conf
 COPY docker-entrypoint.sh ./
 COPY Caddyfile /usr/local/caddy/
 
+RUN chmod a+x /aria2/docker-entrypoint.sh
+
 VOLUME /aria2/data
 VOLUME /aria2/conf
 
