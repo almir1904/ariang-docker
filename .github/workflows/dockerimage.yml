@@ -27,6 +27,7 @@ jobs:
           TARGET_REPO=https://api.github.com/repos/mayswind/AriaNg/releases/latest
           echo "current=$(curl $THIS_REPO | jq -r '.tag_name')" >> $GITHUB_STATE
           echo "target=$(curl $TARGET_REPO | jq -r '.tag_name')" >> $GITHUB_STATE
+          echo "builddate=$(date --rfc-3339=date)" >> $GITHUB_STATE
         id: releases
       
       - name: Extract metadata (tags, labels) for Docker
@@ -49,6 +50,8 @@ jobs:
         uses: docker/build-push-action@v2
         env:
           ARIANG_VERSION: ${{ steps.releases.outputs.target }}
+          BUILD_DATE: ${{ steps.releases.outputs.target }}
+          VCS_REF: ${GITHUB_SHA::7}
         with:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
