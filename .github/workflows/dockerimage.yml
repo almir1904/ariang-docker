@@ -27,6 +27,7 @@ jobs:
           TARGET_REPO=https://api.github.com/repos/mayswind/AriaNg/releases/latest
           echo "CURRENT=$(curl $THIS_REPO | jq -r '.tag_name')" >> $GITHUB_ENV
           echo "TARGET=$(curl $TARGET_REPO | jq -r '.tag_name')" >> $GITHUB_ENV
+          echo "ARIANG_VERSION=$(curl $TARGET_REPO | jq -r '.tag_name')" >> $GITHUB_ENV
           echo "BUILDDATE=$(date --rfc-3339=date)" >> $GITHUB_ENV
         id: releases
 
