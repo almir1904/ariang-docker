@@ -4,13 +4,13 @@
 
 # [Aria2](https://github.com/aria2/aria2) + [AriaNg webui](https://github.com/mayswind/AriaNg) inside a [docker container](https://hub.docker.com/r/hurlenko/aria2-ariang)
 
-[![Latest Github release](https://img.shields.io/github/release/hurlenko/aria2-ariang-docker.svg)](https://github.com/hurlenko/aria2-ariang-docker/releases/latest)
-[![Image size](https://img.shields.io/docker/image-size/hurlenko/aria2-ariang/latest)](https://hub.docker.com/r/hurlenko/aria2-ariang/)
+[![Latest Github release](https://img.shields.io/github/release/almir1904/ariang-docker.svg)](https://github.com/almir1904/ariang-docker/releases/latest)
+<!--- [![Image size](https://img.shields.io/docker/image-size/hurlenko/aria2-ariang/latest)](https://hub.docker.com/r/hurlenko/aria2-ariang/) 
 [![Docker Pulls](https://img.shields.io/docker/pulls/hurlenko/aria2-ariang.svg)](https://hub.docker.com/r/hurlenko/aria2-ariang/)
-[![Docker Stars](https://img.shields.io/docker/stars/hurlenko/aria2-ariang.svg)](https://hub.docker.com/r/hurlenko/aria2-ariang/)
+[![Docker Stars](https://img.shields.io/docker/stars/hurlenko/aria2-ariang.svg)](https://hub.docker.com/r/hurlenko/aria2-ariang/)-->
 
 - **[Github](https://github.com/hurlenko/aria2-ariang-docker)**
-- **[Dockerhub](https://hub.docker.com/r/hurlenko/aria2-ariang/)**
+
 
 ## Introduction
 
