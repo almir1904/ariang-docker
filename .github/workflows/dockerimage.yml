@@ -25,9 +25,9 @@ jobs:
           sudo apt-get update && sudo apt-get install jq -y
           THIS_REPO=https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest
           TARGET_REPO=https://api.github.com/repos/mayswind/AriaNg/releases/latest
-          echo "current=$(curl $THIS_REPO | jq -r '.tag_name')" >> $GITHUB_STATE
-          echo "target=$(curl $TARGET_REPO | jq -r '.tag_name')" >> $GITHUB_STATE
-          echo "builddate=$(date --rfc-3339=date)" >> $GITHUB_STATE
+          echo "CURRENT=$(curl $THIS_REPO | jq -r '.tag_name')" >> $GITHUB_ENV
+          echo "TARGET=$(curl $TARGET_REPO | jq -r '.tag_name')" >> $GITHUB_ENV
+          echo "BUILDDATE=$(date --rfc-3339=date)" >> $GITHUB_ENV
         id: releases
       
       - name: Extract metadata (tags, labels) for Docker
@@ -40,7 +40,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@master
         with:
-          platforms: all
+          platforms: linux/amd64
 
       - name: Set up Docker Buildx
         id: buildx
@@ -49,8 +49,8 @@ jobs:
       - name: Build and push Docker image AMD64
         uses: docker/build-push-action@v2
         env:
-          ARIANG_VERSION: ${{ steps.releases.outputs.target }}
-          BUILD_DATE: ${{ steps.releases.outputs.target }}
+          ARIANG_VERSION: $CURRENT
+          BUILD_DATE: $BUILDDATE
           VCS_REF: ${GITHUB_SHA::7}
         with:
           builder: ${{ steps.buildx.outputs.name }}
@@ -60,9 +60,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Create new Github release
-        if: steps.releases.outputs.current != steps.releases.outputs.target
+        if: $CURRENT != $TARGET
         uses: meeDamian/github-release@1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.releases.outputs.target }}
-          name: Update to AriaNg ${{ steps.releases.outputs.target }}
+          tag: $TARGET
+          name: Update to AriaNg $TARGET
