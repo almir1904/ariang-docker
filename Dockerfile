@@ -34,7 +34,7 @@ RUN wget --no-check-certificate https://github.com/mayswind/AriaNg/releases/down
 WORKDIR /aria2
 
 COPY aria2.conf ./conf-copy/aria2.conf
-COPY start.sh ./
+COPY docker-entrypoint.sh ./
 COPY Caddyfile /usr/local/caddy/
 
 VOLUME /aria2/data
@@ -42,5 +42,5 @@ VOLUME /aria2/conf
 
 EXPOSE 6800
 
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["/aria2/docker-entrypoint.sh"]
 CMD ["--conf-path=/aria2/conf/aria2.conf"]
