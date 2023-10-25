@@ -29,6 +29,12 @@ jobs:
           echo "TARGET=$(curl $TARGET_REPO | jq -r '.tag_name')" >> $GITHUB_ENV
           echo "BUILDDATE=$(date --rfc-3339=date)" >> $GITHUB_ENV
         id: releases
+
+      - name: Test Variables
+        run: |
+          echo ${{ env.BUILDDATE }}
+          echo ${{ env.TARGET }}
+          echo ${{ env.CURRENT }}
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
