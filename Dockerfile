@@ -1,4 +1,4 @@
-FROM alpine:3.16.0
+FROM alpine:latest
 
 ARG ARIANG_VERSION
 ARG BUILD_DATE
@@ -6,7 +6,7 @@ ARG VCS_REF
 
 ENV ARIA2RPCPORT=6800
 
-LABEL maintainer="hurlenko" \
+LABEL maintainer="almir1904" \
     org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.name="aria2-ariang" \
     org.label-schema.description="Aria2 downloader and AriaNg webui Docker image based on Alpine Linux" \
