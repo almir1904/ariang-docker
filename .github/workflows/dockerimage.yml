@@ -71,5 +71,5 @@ jobs:
         uses: meeDamian/github-release@1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: $TARGET
+          tag: ${{ env.TARGET }}
           name: Update to AriaNg ${{ env.TARGET }}
