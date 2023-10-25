@@ -49,7 +49,7 @@ jobs:
       - name: Build and push Docker image AMD64
         uses: docker/build-push-action@v2
         env:
-          ARIANG_VERSION: ${{ env.CURRENT }}
+          ARIANG_VERSION: ${{ env.TARGET }}
           BUILD_DATE: ${{ env.BUILDDATE }}
           VCS_REF: ${GITHUB_SHA::7}
         with:
