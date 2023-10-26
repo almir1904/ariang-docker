@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set ARIA2RPCPORT to 6800 if it's not set
-ARIA2RPCPORT="${ARIA2RPCPORT:-6800}"
+ARIANGPORT="${ARIANGPORT:-6888}"
 
 # Define the URL with the specified port
-HEALTHCHECK_URL="http://localhost:$ARIA2RPCPORT/jsonrpc"
+HEALTHCHECK_URL="http://localhost:$ARIA2RPCPORT"
 
 # Use curl to send an HTTP GET request to the specified URL
 if curl --output /dev/null --silent --head --fail "$HEALTHCHECK_URL"; then
