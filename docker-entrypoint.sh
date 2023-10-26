@@ -6,6 +6,7 @@ conf_copy_path=/aria2/conf-copy
 data_path=/aria2/data
 ariang_path=/usr/local/www/ariang
 ariang_js_path=/usr/local/www/ariang/js/aria-ng*.js
+ariang_js_dir=/usr/local/www/ariang/js/
 
 # Function to copy default config
 copy_default_config() {
@@ -23,7 +24,7 @@ set_rpc_secret() {
         if [ -n "$EMBED_RPC_SECRET" ]; then
             echo "Embedding RPC secret into AriaNg Web UI"
             RPC_SECRET_BASE64=$(echo -n "${RPC_SECRET}" | base64 -w 0)
-            sed -i 's,secret:"[^"]*",secret:"'"${RPC_SECRET_BASE64}"'",g' $ariang_js_path
+            find "$ariang_js_dir" -name 'aria-ng*.js' -exec sed -i 's,secret:"[^"]*",secret:"'"${RPC_SECRET_BASE64}"'",g' {} \;
         fi
     fi
 }
