@@ -68,7 +68,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Create new Github release
-        if: ${{ env.CURRENT }} != ${{ env.TARGET }}
+        #if: ${{ env.CURRENT }} != ${{ env.TARGET }}
         uses: meeDamian/github-release@1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
