@@ -24,7 +24,7 @@ set_rpc_secret() {
         if [ -n "$EMBED_RPC_SECRET" ]; then
             echo "Embedding RPC secret into AriaNg Web UI"
             RPC_SECRET_BASE64=$(echo -n "${RPC_SECRET}" | base64 -w 0)
-            find "$ariang_js_dir" -name 'aria-ng*.js' -exec sed -i 's,secret:"[^"]*",secret:"'"${RPC_SECRET_BASE64}"'",g' {} \;
+            find "/usr/local/www/ariang/js/" -name 'aria-ng*.js' -exec sed -i 's,secret:"[^"]*",secret:"'"${RPC_SECRET_BASE64}"'",g' {} \;
         fi
     fi
 }
