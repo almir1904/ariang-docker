@@ -50,7 +50,7 @@ RUN chmod +x /aria2/healthcheck.sh
 # Expose ports 6800 for Aria2 RPC and 6888 for AriaNg
 EXPOSE 6800 6888
 
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD /aria2/healthcheck.sh
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD /bin/sh /aria2/healthcheck.sh
 
 # Define the entrypoint
 ENTRYPOINT ["/aria2/docker-entrypoint.sh"]
