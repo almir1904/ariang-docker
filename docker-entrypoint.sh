@@ -5,7 +5,7 @@ conf_path="/aria2/conf"
 conf_copy_path="/aria2/conf-copy"
 data_path="/aria2/data"
 ariang_path="/usr/local/www/ariang"
-ariang_js_path="${ariang_path}/js/aria-ng*.js"
+ariang_js_path=/usr/local/www/ariang/js/aria-ng*.js
 
 # Function to copy default config
 copy_default_config() {
@@ -58,9 +58,9 @@ chown -R "$userid:$groupid" "$conf_path" "$data_path" "$ariang_path"
 
 # Start darkhttpd with or without basic authentication
 if [ -n "$BASIC_AUTH_USERNAME" ] && [ -n "$BASIC_AUTH_PASSWORD" ]; then
-    darkhttpd "$ariang_path" --port 6888 --auth "$BASIC_AUTH_USERNAME:$BASIC_AUTH_PASSWORD" &
+    darkhttpd /usr/local/www/ariang --port 6888 --auth "$BASIC_AUTH_USERNAME:$BASIC_AUTH_PASSWORD" &
 else
-    darkhttpd "$ariang_path" --port 6888 &
+    darkhttpd /usr/local/www/ariang --port 6888 &
 fi
 
 # Run aria2c as the specified user and group
