@@ -39,7 +39,6 @@ change_rpc_port() {
 # Main script
 copy_default_config
 set_rpc_secret
-aria2c --conf-path="/aria2/conf/aria2.conf"
 touch "$conf_path/aria2.session"
 change_rpc_port
 
