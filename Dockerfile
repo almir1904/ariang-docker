@@ -1,9 +1,12 @@
-# Use a smaller base image, such as Alpine Linux
 FROM alpine:latest
 
 ARG ARIANG_VERSION
 ARG BUILD_DATE
 ARG VCS_REF
+
+# Set environment variables
+ENV ARIA2RPCPORT=6800
+ENV ARIANGPORT=6888
 
 LABEL maintainer="almir1904" \
     org.label-schema.build-date=$BUILD_DATE \
@@ -18,20 +21,19 @@ LABEL maintainer="almir1904" \
     org.label-schema.vendor="almir1904" \
     org.label-schema.schema-version="1.0"
 
-# Set environment variables
-ENV ARIA2RPCPORT=6800
-ENV ARIANGPORT=6888
-
 # Install required packages and clean up
 RUN apk --no-cache add darkhttpd aria2 curl su-exec && \
     rm -rf /var/cache/apk/*
+
+# AriaNG
+WORKDIR /usr/local/www/ariang
 
 # Create directories for Aria2 data and configuration
 RUN mkdir -p /aria2/data /aria2/conf
 
 # Download and install AriaNg
-RUN echo $ARIANG_VERSION && \
-    wget --no-check-certificate -O /usr/local/www/ariang.zip https://github.com/mayswind/AriaNg/releases/download/$ARIANG_VERSION/AriaNg-$ARIANG_VERSION.zip && \
+RUN echo ${ARIANG_VERSION} && \
+    wget --no-check-certificate -O /usr/local/www/ariang.zip "https://github.com/mayswind/AriaNg/releases/download/${ARIANG_VERSION}/AriaNg-${ARIANG_VERSION}.zip" && \
     unzip /usr/local/www/ariang.zip -d /usr/local/www/ && \
     rm /usr/local/www/ariang.zip && \
     chmod -R 755 /usr/local/www/ariang
