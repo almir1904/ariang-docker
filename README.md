@@ -9,7 +9,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/hurlenko/aria2-ariang.svg)](https://hub.docker.com/r/hurlenko/aria2-ariang/)
 [![Docker Stars](https://img.shields.io/docker/stars/hurlenko/aria2-ariang.svg)](https://hub.docker.com/r/hurlenko/aria2-ariang/)-->
 
-- **[Github](https://github.com/hurlenko/aria2-ariang-docker)**
+- **[Github](https://github.com/almir1904/ariang-docker)**
 
 
 ## Introduction
