@@ -39,8 +39,9 @@ change_rpc_port() {
 # Main script
 copy_default_config
 set_rpc_secret
-touch "$conf_path/aria2.session"
 change_rpc_port
+touch "$conf_path/aria2.session"
+
 
 # Get user and group IDs
 userid="$(id -u)"  # 65534 - nobody, 0 - root
