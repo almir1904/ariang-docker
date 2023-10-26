@@ -70,7 +70,7 @@ docker run -d \
     -e PGID=1000 \
     -e ARIA2RPCPORT=443 \
     -e RPC_SECRET=NOBODYKNOWSME \
-    hurlenko/aria2-ariang
+    almir1904/ariang-docker
 ```
 
 ### docker-compose
@@ -82,7 +82,7 @@ version: "3"
 
 services:
   ariang:
-    image: hurlenko/aria2-ariang
+    image: almir1904/ariang-docker
     ports:
       - 443:8080
     volumes:
