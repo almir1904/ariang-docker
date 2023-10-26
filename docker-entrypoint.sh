@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Define variables
-conf_path="/aria2/conf"
-conf_copy_path="/aria2/conf-copy"
-data_path="/aria2/data"
-ariang_path="/usr/local/www/ariang"
+conf_path=/aria2/conf
+conf_copy_path=/aria2/conf-copy
+data_path=/aria2/data
+ariang_path=/usr/local/www/ariang
 ariang_js_path=/usr/local/www/ariang/js/aria-ng*.js
 
 # Function to copy default config
@@ -23,7 +23,7 @@ set_rpc_secret() {
         if [ -n "$EMBED_RPC_SECRET" ]; then
             echo "Embedding RPC secret into AriaNg Web UI"
             RPC_SECRET_BASE64=$(echo -n "${RPC_SECRET}" | base64 -w 0)
-            sed -i 's,secret:"[^"]*",secret:"'"${RPC_SECRET_BASE64}"'",g' "$ariang_js_path"
+            sed -i 's,secret:"[^"]*",secret:"'"${RPC_SECRET_BASE64}"'",g' $ariang_js_path
         fi
     fi
 }
@@ -39,7 +39,7 @@ change_rpc_port() {
 # Main script
 copy_default_config
 set_rpc_secret
-aria2c --conf-path="$conf_path/aria2.conf"
+aria2c --conf-path="/aria2/conf/aria2.conf"
 touch "$conf_path/aria2.session"
 change_rpc_port
 
