@@ -41,16 +41,16 @@ RUN echo ${ARIANG_VERSION} && \
 # Copy configuration files and entrypoint script
 COPY aria2.conf /aria2/conf/aria2.conf
 COPY docker-entrypoint.sh /aria2/docker-entrypoint.sh
-COPY healthcheck.sh /usr/local/bin/healthcheck.sh
+COPY healthcheck.sh /aria2/healthcheck.sh
 
 # Make the entrypoint script executable
 RUN chmod +x /aria2/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/healthcheck.sh
+RUN chmod +x /aria2/healthcheck.sh
 
 # Expose ports 6800 for Aria2 RPC and 6888 for AriaNg
 EXPOSE 6800 6888
 
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD /usr/local/bin/healthcheck.sh
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD /aria2/healthcheck.sh
 
 # Define the entrypoint
 ENTRYPOINT ["/aria2/docker-entrypoint.sh"]
