@@ -13,8 +13,7 @@ RUN apk --no-cache add darkhttpd aria2 curl && \
 RUN mkdir -p /aria2/data /aria2/conf
 
 # Download and install AriaNg
-RUN wget --no-check-certificate -O /usr/local/www/ariang.zip \
-    "https://github.com/mayswind/AriaNg/releases/download/${ARIANG_VERSION}/AriaNg-${ARIANG_VERSION}.zip" && \
+RUN wget --no-check-certificate -O /usr/local/www/ariang.zip https://github.com/mayswind/AriaNg/releases/download/${ARIANG_VERSION}/AriaNg-${ARIANG_VERSION}.zip && \
     unzip /usr/local/www/ariang.zip -d /usr/local/www/ && \
     rm /usr/local/www/ariang.zip && \
     chmod -R 755 /usr/local/www/ariang
