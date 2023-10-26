@@ -73,4 +73,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.TARGET }}
+          allow_override: true
           name: Update to AriaNg ${{ env.TARGET }}
