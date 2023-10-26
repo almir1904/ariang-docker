@@ -36,6 +36,7 @@ jobs:
           echo ${{ env.BUILDDATE }}
           echo ${{ env.TARGET }}
           echo ${{ env.CURRENT }}
+          echo ${{ env.ARIANG_VERSION }}
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
